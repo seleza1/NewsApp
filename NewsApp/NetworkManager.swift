@@ -28,7 +28,7 @@ final class NetworkManager {
                 do {
                     let result = try JSONDecoder().decode(NewsModel.self, from: data)
 
-                    print(result.articles.count)
+                    print(result.articles)
                 } catch {
                     completion(.failure(error))
                 }
