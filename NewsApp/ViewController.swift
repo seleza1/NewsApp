@@ -11,7 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        NetworkManager.shared.getTopStories { result in
+            switch result {
+            case .success(let response):
+                break
+            case .failure(let failure):
+                print("error")
+            }
+        }
     }
 
 

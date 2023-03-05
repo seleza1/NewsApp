@@ -26,7 +26,9 @@ final class NetworkManager {
                 completion(.failure(error))
             } else if let data = data {
                 do {
-                    let result = try JSONDecoder().decode(String.self, from: data)
+                    let result = try JSONDecoder().decode(NewsModel.self, from: data)
+
+                    print(result.articles.count)
                 } catch {
                     completion(.failure(error))
                 }
