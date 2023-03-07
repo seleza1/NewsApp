@@ -11,20 +11,20 @@ protocol MainViewProtocol: AnyObject {
 }
 
 protocol MainPresenterProtocol: AnyObject {
-    init(view: MainViewProtocol, networkService: NetworkManagerProtocol, router: RouterProtocol)
+    init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol)
     func getNews()
-    var news: [News]? { get set }
+    var news: [Article]? { get set }
 
 }
 
 class MainPresenter: MainPresenterProtocol {
 
     weak var view: MainViewProtocol?
-    let networkService: NetworkManagerProtocol!
-    var news: [News]?
+    let networkService: NetworkServiceProtocol!
+    var news: [Article]?
     var router: RouterProtocol?
 
-    required init(view: MainViewProtocol, networkService: NetworkManagerProtocol, router: RouterProtocol) {
+    required init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol) {
         self.view = view
         self.networkService = networkService
         self.router = router
@@ -32,7 +32,15 @@ class MainPresenter: MainPresenterProtocol {
     }
 
     func getNews() {
-        <#code#>
+        networkService.getTopStories { [weak self] result in
+            switch result {
+            case .success(let news):
+                self?.news = news
+                self?.view?.succes()
+            case .failure(let error):
+                self?.view?.failure(error: error)
+            }
+        }
     }
     
 }

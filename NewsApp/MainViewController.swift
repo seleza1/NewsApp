@@ -13,14 +13,17 @@ class MainViewController: UIViewController {
 
     let identifier = "Cell"
 
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
 
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(tableView)
+        setConstraints()
         view.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
     }
@@ -30,11 +33,15 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        presenter.news?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let news = presenter.news?[indexPath.row]
+        cell.textLabel?.text = news?.title
 
+        return cell
     }
 
 
@@ -42,7 +49,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MainViewController: MainViewProtocol {
     func succes() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     func failure(error: Error) {
@@ -50,5 +59,16 @@ extension MainViewController: MainViewProtocol {
     }
 
 
+}
+
+extension MainViewController {
+    func setConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
+    }
 }
 
