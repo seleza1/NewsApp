@@ -23,11 +23,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
-        setConstraints()
         view.backgroundColor = .white
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+
+        setConstraints()
+        setTableView()
+
     }
 }
 
@@ -63,13 +63,20 @@ extension MainViewController: MainViewProtocol {
 }
 
 extension MainViewController {
-    func setConstraints() {
+    private func setConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
+    }
+
+    private func setTableView() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = 70
     }
 }
 

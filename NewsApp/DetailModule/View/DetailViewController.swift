@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(newsLabel)
+        
         setConstraints()
         presenter.setNews()
 
