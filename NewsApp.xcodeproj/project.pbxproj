@@ -17,6 +17,8 @@
 		CEB7D29A29B745BF00B326C4 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D29929B745BF00B326C4 /* MainPresenter.swift */; };
 		CEB7D2A129B7478E00B326C4 /* MainModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D2A029B7478E00B326C4 /* MainModuleBuilder.swift */; };
 		CEB7D2A429B7481C00B326C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D2A329B7481C00B326C4 /* Router.swift */; };
+		CEB7D2AB29B78B6900B326C4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D2AA29B78B6900B326C4 /* DetailViewController.swift */; };
+		CEB7D2AE29B78B8000B326C4 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D2AD29B78B8000B326C4 /* DetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		CEB7D29929B745BF00B326C4 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		CEB7D2A029B7478E00B326C4 /* MainModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleBuilder.swift; sourceTree = "<group>"; };
 		CEB7D2A329B7481C00B326C4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		CEB7D2AA29B78B6900B326C4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CEB7D2AD29B78B8000B326C4 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				CEB7D29529B744D100B326C4 /* Applications */,
-				CEB7D29829B7459900B326C4 /* MainMidule */,
+				CEB7D2A929B78B3C00B326C4 /* DetailModule */,
+				CEB7D29829B7459900B326C4 /* MainModule */,
 				CEB7D29729B7459300B326C4 /* Builder */,
 				CEB7D2A229B7480D00B326C4 /* Router */,
 				CEB7D29F29B7464F00B326C4 /* ServiceLayer */,
@@ -101,14 +106,14 @@
 			name = Builder;
 			sourceTree = "<group>";
 		};
-		CEB7D29829B7459900B326C4 /* MainMidule */ = {
+		CEB7D29829B7459900B326C4 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
 				CEB7D29D29B7461600B326C4 /* Model */,
 				CEB7D29C29B7461000B326C4 /* View */,
 				CEB7D29E29B7461E00B326C4 /* Presenter */,
 			);
-			name = MainMidule;
+			name = MainModule;
 			sourceTree = "<group>";
 		};
 		CEB7D29C29B7461000B326C4 /* View */ = {
@@ -149,6 +154,31 @@
 				CEB7D2A329B7481C00B326C4 /* Router.swift */,
 			);
 			name = Router;
+			sourceTree = "<group>";
+		};
+		CEB7D2A929B78B3C00B326C4 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7D2AC29B78B7200B326C4 /* View */,
+				CEB7D2AF29B78B8400B326C4 /* Presenter */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		CEB7D2AC29B78B7200B326C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7D2AA29B78B6900B326C4 /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEB7D2AF29B78B8400B326C4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7D2AD29B78B8000B326C4 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,9 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7D2AB29B78B6900B326C4 /* DetailViewController.swift in Sources */,
 				CEB7D2A429B7481C00B326C4 /* Router.swift in Sources */,
 				CEB7D29A29B745BF00B326C4 /* MainPresenter.swift in Sources */,
 				CEB63D2929B522CD00108D43 /* NetworkService.swift in Sources */,
+				CEB7D2AE29B78B8000B326C4 /* DetailPresenter.swift in Sources */,
 				CEB63D1929B5224700108D43 /* MainViewController.swift in Sources */,
 				CEB7D2A129B7478E00B326C4 /* MainModuleBuilder.swift in Sources */,
 				CEB63D1529B5224700108D43 /* AppDelegate.swift in Sources */,
