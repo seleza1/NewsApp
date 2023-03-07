@@ -9,9 +9,19 @@ import UIKit
 
 protocol AssemblyBuilderProtocol {
     func createMainModule(router: RouterProtocol) -> UIViewController
+    func createDetailModule(news: Article?, router: RouterProtocol) -> UIViewController
 }
 
 class ModelBuilder: AssemblyBuilderProtocol {
+    func createDetailModule(news: Article?, router: RouterProtocol) -> UIViewController {
+        let view = DetailViewController()
+        let networkService = NetworkService()
+        let presenter = DetailPresenter(view: view, networkService: networkService, news: news)
+        view.presenter = presenter
+
+        return view
+    }
+
     func createMainModule(router: RouterProtocol) -> UIViewController {
         let view = MainViewController()
         let networkService = NetworkService()
@@ -20,4 +30,6 @@ class ModelBuilder: AssemblyBuilderProtocol {
 
         return view
     }
+
+
 }

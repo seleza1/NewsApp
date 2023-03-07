@@ -13,11 +13,16 @@ protocol MainViewProtocol: AnyObject {
 protocol MainViewPresenterProtocol: AnyObject {
     init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol)
     func getNews()
-    var news: [Article]? { get set } 
+    var news: [Article]? { get set }
+    func tapOnTheNews(news: Article)
 
 }
 
 class MainPresenter: MainViewPresenterProtocol {
+    func tapOnTheNews(news: Article) {
+        router?.showDetail(news: news)
+    }
+
     weak var view: MainViewProtocol?
     let networkService: NetworkServiceProtocol!
     var news: [Article]?
