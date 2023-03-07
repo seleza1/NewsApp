@@ -16,6 +16,7 @@
 		CEB63D2B29B525ED00108D43 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB63D2A29B525ED00108D43 /* News.swift */; };
 		CEB7D29A29B745BF00B326C4 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D29929B745BF00B326C4 /* MainPresenter.swift */; };
 		CEB7D2A129B7478E00B326C4 /* MainModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D2A029B7478E00B326C4 /* MainModuleBuilder.swift */; };
+		CEB7D2A429B7481C00B326C4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB7D2A329B7481C00B326C4 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CEB63D2A29B525ED00108D43 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		CEB7D29929B745BF00B326C4 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		CEB7D2A029B7478E00B326C4 /* MainModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleBuilder.swift; sourceTree = "<group>"; };
+		CEB7D2A329B7481C00B326C4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		CEB63D1329B5224700108D43 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				CEB7D2A229B7480D00B326C4 /* Router */,
 				CEB7D29729B7459300B326C4 /* Builder */,
 				CEB7D29829B7459900B326C4 /* MainMidule */,
 				CEB7D29F29B7464F00B326C4 /* ServiceLayer */,
@@ -140,6 +143,14 @@
 			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
+		CEB7D2A229B7480D00B326C4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CEB7D2A329B7481C00B326C4 /* Router.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7D2A429B7481C00B326C4 /* Router.swift in Sources */,
 				CEB7D29A29B745BF00B326C4 /* MainPresenter.swift in Sources */,
 				CEB63D2929B522CD00108D43 /* NetworkManager.swift in Sources */,
 				CEB63D1929B5224700108D43 /* MainViewController.swift in Sources */,
