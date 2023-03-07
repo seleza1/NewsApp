@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    var presenter: MainPresenterProtocol!
+    var presenter: MainViewPresenterProtocol!
 
     let identifier = "Cell"
 
@@ -26,9 +26,9 @@ class MainViewController: UIViewController {
         setConstraints()
         view.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-
-
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -43,8 +43,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-
-
 }
 
 extension MainViewController: MainViewProtocol {

@@ -10,15 +10,14 @@ protocol MainViewProtocol: AnyObject {
     func failure(error: Error)
 }
 
-protocol MainPresenterProtocol: AnyObject {
+protocol MainViewPresenterProtocol: AnyObject {
     init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol)
     func getNews()
-    var news: [Article]? { get set }
+    var news: [Article]? { get set } 
 
 }
 
-class MainPresenter: MainPresenterProtocol {
-
+class MainPresenter: MainViewPresenterProtocol {
     weak var view: MainViewProtocol?
     let networkService: NetworkServiceProtocol!
     var news: [Article]?
