@@ -11,14 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkManager.shared.getTopStories { result in
-            switch result {
-            case .success(let response):
-                break
-            case .failure(let failure):
-                print("error")
-            }
-        }
+        view.backgroundColor = .white
     }
 
 
