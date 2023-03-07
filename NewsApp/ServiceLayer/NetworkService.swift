@@ -13,15 +13,11 @@ protocol NetworkServiceProtocol {
 
 final class NetworkService: NetworkServiceProtocol {
 
-    static let shared = NetworkService()
-
     struct Constants {
         static let topHeadlinesURL = URL(string: "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=a1181b2fbad34b75ba37ce0b3e0d335e")
     }
 
-    init() {}
-
-    public func getTopStories(completion: @escaping (Result<[Article], Error>) -> Void) {
+    func getTopStories(completion: @escaping (Result<[Article], Error>) -> Void) {
         guard let url = Constants.topHeadlinesURL else { return }
 
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
@@ -38,4 +34,6 @@ final class NetworkService: NetworkServiceProtocol {
         }
         task.resume()
     }
+
+
 }
