@@ -16,7 +16,7 @@ final class NetworkManager {
         static let topHeadlinesURL = URL(string: "https://newsapi.org/v2/everything?q=tesla&from=2023-02-05&sortBy=publishedAt&apiKey=a5531ed2ed9b4f97856f68ae8091067e")
     }
 
-    private init() {}
+    init() {}
 
     public func getTopStories(completion: @escaping (Result<[String], Error>) -> Void) {
         guard let url = Constants.topHeadlinesURL else { return }
@@ -26,7 +26,7 @@ final class NetworkManager {
                 completion(.failure(error))
             } else if let data = data {
                 do {
-                    let result = try JSONDecoder().decode(NewsModel.self, from: data)
+                    let result = try JSONDecoder().decode(News.self, from: data)
 
                     print(result.articles)
                 } catch {
