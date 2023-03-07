@@ -37,9 +37,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.idMainTableViewCell, for: indexPath) as? MainTableViewCell else {
+            return UITableViewCell()
+        }
         let news = presenter.news?[indexPath.row]
-        cell.textLabel?.text = news?.title
+        cell.configure(name: news!, image: news!)
 
         return cell
     }
@@ -47,6 +49,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let news = presenter.news?[indexPath.row]
         presenter.tapOnTheNews(news: news!)
+
     }
 }
 
@@ -73,10 +76,10 @@ extension MainViewController {
     }
 
     private func setTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.idMainTableViewCell)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 70
+        tableView.rowHeight = 100
     }
 }
 
