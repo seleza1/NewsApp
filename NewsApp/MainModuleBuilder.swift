@@ -5,6 +5,8 @@
 //  Created by user on 07.03.2023.
 //
 
+import UIKit
+
 protocol AssemblyBuilderProtocol {
     func createMainModule(router: RouterProtocol) -> UIViewController
 }

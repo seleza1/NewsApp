@@ -9,6 +9,8 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    var presenter: MainPresenterProtocol!
+
     let identifier = "Cell"
 
     let tableView: UITableView = {
@@ -33,6 +35,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+    }
+
+
+}
+
+extension MainViewController: MainViewProtocol {
+    func succes() {
+        tableView.reloadData()
+    }
+
+    func failure(error: Error) {
+        print("error")
     }
 
 

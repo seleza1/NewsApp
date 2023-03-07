@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class NetworkManager {
+protocol NetworkManagerProtocol {
+    func getTopStories(completion: @escaping (Result<[String], Error>) -> Void)
+}
+
+final class NetworkManager: NetworkManagerProtocol {
 
     let apiKey = "a5531ed2ed9b4f97856f68ae8091067e"
     static let shared = NetworkManager()
