@@ -55,8 +55,6 @@ extension MainViewController: MainViewProtocol {
     func failure(error: Error) {
         print("error")
     }
-
-
 }
 
 extension MainViewController {
