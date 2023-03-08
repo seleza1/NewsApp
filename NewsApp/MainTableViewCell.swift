@@ -5,7 +5,6 @@
 //  Created by user on 07.03.2023.
 //
 
-import Foundation
 import UIKit
 
 final class MainTableViewCell: UITableViewCell {
@@ -53,7 +52,6 @@ final class MainTableViewCell: UITableViewCell {
             case .success(let image):
                 if imageURL == self?.imageURL {
                     self?.imageView?.image = image
-
                 }
             case .failure(let error):
                 print(error)

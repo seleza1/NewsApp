@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewProtocol {
     func setNews(news: Article?) {
-        newsLabel.text = news?.description
+        newsLabel.text = news?.content
     }
 }
 
@@ -57,11 +57,9 @@ extension DetailViewController {
             imagesNews.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             imagesNews.heightAnchor.constraint(equalToConstant: 200),
 
-            newsLabel.topAnchor.constraint(equalTo: imagesNews.bottomAnchor, constant: 16),
+            newsLabel.topAnchor.constraint(equalTo: imagesNews.bottomAnchor, constant: 8),
             newsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             newsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-
-
 
         ])
     }
