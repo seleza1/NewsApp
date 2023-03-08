@@ -7,13 +7,35 @@
 
 import UIKit
 
-final class MainTableViewCell: UITableViewCell {
-    private let networkManager = NetworkService()
+class NewsNodel {
+    let title: String?
+    let subtitle: String?
+    let imageUrl: URL?
+    var imageData: Data?
+
+    init(title: String?, subtitle: String?, imageUrl: URL?, imageData: Data? = nil) {
+        self.title = title
+        self.subtitle = subtitle
+        self.imageUrl = imageUrl
+        self.imageData = imageData
+    }
+}
+
+class MainTableViewCell: UITableViewCell {
 
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
+
+        return label
+    }()
+
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 17, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -22,22 +44,19 @@ final class MainTableViewCell: UITableViewCell {
     private let imageViews: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-
+        image.clipsToBounds = true
+        image.contentMode = .scaleToFill
+        image.backgroundColor = .secondarySystemBackground
         return image
     }()
 
-    private var imageURL: URL? {
-        didSet {
-            imageView!.image = nil
-            updateImage()
-        }
-    }
-
-    static var idMainTableViewCell = "idMainTableViewCell"
+    static let idMainTableViewCell = "celltable"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
+        contentView.addSubview(imageViews)
+        contentView.addSubview(valueLabel)
+        contentView.addSubview(subtitleLabel)
         setConstraints()
     }
 
@@ -45,57 +64,25 @@ final class MainTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func updateImage() {
-        guard let imageURL = imageURL else { return }
-        getImage(from: imageURL) { [weak self] result in
-            switch result {
-            case .success(let image):
-                if imageURL == self?.imageURL {
-                    self?.imageView?.image = image
+    func configure(with viewModel: NewsNodel) {
+        valueLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+
+        if let data = viewModel.imageData {
+            imageViews.image = UIImage(data: data)
+        }
+        else if let url = viewModel.imageUrl {
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                guard let data = data , error == nil else {
+                    return
                 }
-            case .failure(let error):
-                print(error)
-            }
+                viewModel.imageData = data
+
+                DispatchQueue.main.async {
+                    self.imageViews.image = UIImage(data: data)
+                }
+            }.resume()
         }
-    }
-
-    private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
-
-        // Download image from url
-        networkManager.fetchImage { result in
-            switch result {
-            case .success(let imageData):
-                guard let uiImage = UIImage(data: imageData) else { return }
-                completion(.success(uiImage))
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-
-    private func setupViews() {
-        selectionStyle = .none
-        addSubview(valueLabel)
-        addSubview(imageViews)
-
-    }
-
-    public func configure(name: Article, image: Article) {
-        valueLabel.text = name.title
-        imageURL = URL(string: image.urlToImage!)
-
-    }
-
-    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = .white
-        activityIndicator.startAnimating()
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-
-        view.addSubview(activityIndicator)
-
-        return activityIndicator
     }
 }
 
@@ -104,15 +91,20 @@ extension MainTableViewCell {
         NSLayoutConstraint.activate([
 
             imageViews.topAnchor.constraint(equalTo: topAnchor, constant: 1),
-            imageViews.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             imageViews.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
-            // imageViews.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -250),
+            imageViews.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1),
             imageViews.widthAnchor.constraint(equalToConstant: 150),
 
-            valueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            valueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
-            valueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
-            valueLabel.leadingAnchor.constraint(equalTo: imageViews.trailingAnchor, constant: 6)
+            valueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            valueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
+            valueLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
+            valueLabel.trailingAnchor.constraint(equalTo: imageViews.leadingAnchor, constant: -1),
+
+            subtitleLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 1),
+            subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
+            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 1),
+            subtitleLabel.trailingAnchor.constraint(equalTo: imageViews.leadingAnchor, constant: -1),
+
 
         ])
     }
