@@ -13,7 +13,6 @@ protocol DetailViewProtocol: AnyObject {
 protocol DetailViewPresenterProtocol: AnyObject {
     init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, news: Article?, router: RouterProtocol)
     func setNews()
-    func getImage()
     func presentInfo()
 }
 
@@ -33,23 +32,9 @@ class DetailPresenter: DetailViewPresenterProtocol {
         self.networkService = networkService
         self.news = news
         self.router = router
-        getImage()
     }
 
     func setNews() {
         self.view.setNews(news: news)
     }
-
-    func getImage() {
-        networkService.fetchImage { result in
-            switch result {
-            case .success(let image):
-                print(image)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-
-
 }

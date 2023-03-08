@@ -39,14 +39,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(newsLabel)
-        view.addSubview(imagesNews)
-        view.addSubview(button)
-        presenter.getImage()
-        button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
-
+        addViews()
         setConstraints()
         presenter.setNews()
+        button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
     }
 
     @objc func tapped() {
@@ -79,5 +75,11 @@ extension DetailViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
 
         ])
+    }
+
+    private func addViews() {
+        view.addSubview(newsLabel)
+        view.addSubview(imagesNews)
+        view.addSubview(button)
     }
 }
