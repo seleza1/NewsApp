@@ -38,7 +38,7 @@ class Router: RouterProtocol {
     func showDetail(news: Article) {
         if let navigationController = navigationController {
             guard let detailViewController = assemblyBuilder?.createDetailModule(news: news, router: self) else { return }
-            navigationController.present(detailViewController, animated: true)
+            navigationController.pushViewController(detailViewController, animated: true)
         }
     }
 

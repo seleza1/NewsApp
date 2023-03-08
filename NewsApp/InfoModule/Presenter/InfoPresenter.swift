@@ -24,8 +24,4 @@ class InfoPresenter: InfoViewPresenterProtocol {
         self.router = router
         self.view = view
     }
-
-
-
-
 }

@@ -50,7 +50,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let news = presenter.news?[indexPath.row]
         presenter.tapOnTheNews(news: news!)
-
     }
 }
 

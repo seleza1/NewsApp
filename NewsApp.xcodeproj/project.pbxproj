@@ -83,9 +83,25 @@
 		CE86711329B8E04100F7FDAB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CEA4B86329B7C50500A4C2E5 /* MainTableViewCell.swift */,
+				CE86711529B8E33500F7FDAB /* Extension + UiTableViewCell */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE86711429B8E32300F7FDAB /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				CEB63D2829B522CD00108D43 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		CE86711529B8E33500F7FDAB /* Extension + UiTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CEA4B86329B7C50500A4C2E5 /* MainTableViewCell.swift */,
+			);
+			path = "Extension + UiTableViewCell";
 			sourceTree = "<group>";
 		};
 		CEB63D0829B5224700108D43 = {
@@ -184,7 +200,7 @@
 		CEB7D29F29B7464F00B326C4 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				CEB63D2829B522CD00108D43 /* NetworkService.swift */,
+				CE86711429B8E32300F7FDAB /* NetworkService */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
