@@ -13,15 +13,9 @@ protocol InfoViewProtocol: AnyObject {
 
 protocol InfoViewPresenterProtocol: AnyObject {
     init(view: InfoViewProtocol, router: RouterProtocol)
-    func tapButtonShowInfo()
-
 }
 
 class InfoPresenter: InfoViewPresenterProtocol {
-
-    func tapButtonShowInfo() {
-        router?.pushInfo()
-    }
 
     weak var view: InfoViewProtocol?
     var router: RouterProtocol?

@@ -39,9 +39,4 @@ class ModelBuilder: AssemblyBuilderProtocol {
 
         return view
     }
-
-
-
-
-
 }
