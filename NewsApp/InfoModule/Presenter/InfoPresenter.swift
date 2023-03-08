@@ -17,7 +17,7 @@ protocol InfoViewPresenterProtocol: AnyObject {
 
 class InfoPresenter: InfoViewPresenterProtocol {
 
-    weak var view: InfoViewProtocol?
+    unowned var view: InfoViewProtocol?
     var router: RouterProtocol?
 
     required init(view: InfoViewProtocol, router: RouterProtocol) {

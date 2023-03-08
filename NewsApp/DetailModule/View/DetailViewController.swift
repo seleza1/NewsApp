@@ -73,7 +73,6 @@ class DetailViewController: UIViewController {
     }
 }
 
-
 extension DetailViewController: DetailViewProtocol {
     func setGreetings(text: String) {
         greetingsLabel.text = text

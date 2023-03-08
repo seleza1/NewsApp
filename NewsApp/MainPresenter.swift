@@ -12,6 +12,7 @@ protocol MainViewProtocol: AnyObject {
 
 protocol MainViewPresenterProtocol: AnyObject {
     init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol)
+
     var news: [Article]? { get set }
     func getNews()
     func tapOnTheNews(news: Article)
@@ -23,7 +24,7 @@ class MainPresenter: MainViewPresenterProtocol {
         router?.showDetail(news: news)
     }
 
-    weak var view: MainViewProtocol?
+    unowned var view: MainViewProtocol?
     let networkService: NetworkServiceProtocol!
     var router: RouterProtocol?
     var news: [Article]?

@@ -26,7 +26,7 @@ class DetailPresenter: DetailViewPresenterProtocol {
     }
 
 
-    weak var view: DetailViewProtocol!
+    unowned var view: DetailViewProtocol!
     let networkService: NetworkServiceProtocol!
     var news: Article?
     let router: RouterProtocol?
