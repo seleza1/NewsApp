@@ -47,6 +47,10 @@ class MainTableViewCell: UITableViewCell {
         contentView.addSubview(subtitleLabel)
         setConstraints()
     }
+
+    override func prepareForReuse() { // чтобы не было глик
+        subtitleLabel.text = nil
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
