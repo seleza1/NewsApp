@@ -52,7 +52,6 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let infoViewController = assemblyBuilder?.createInfoModule(router: self) else { return }
             navigationController.pushViewController(infoViewController, animated: true)
-            // navigationController.present(infoViewController, animated: true)
         }
     }
 }

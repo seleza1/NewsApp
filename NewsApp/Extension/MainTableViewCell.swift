@@ -8,6 +8,8 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
+
+    static let idMainTableViewCell = "idMainTableViewCell"
     
     private let valueLabel: UILabel = {
         let label = UILabel()
@@ -37,9 +39,7 @@ class MainTableViewCell: UITableViewCell {
         image.layer.masksToBounds = true
         return image
     }()
-    
-    static let idMainTableViewCell = "celltable"
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(imageViews)

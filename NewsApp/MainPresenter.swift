@@ -12,8 +12,8 @@ protocol MainViewProtocol: AnyObject {
 
 protocol MainViewPresenterProtocol: AnyObject {
     init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol)
-    func getNews()
     var news: [Article]? { get set }
+    func getNews()
     func tapOnTheNews(news: Article)
 
 }
@@ -25,12 +25,12 @@ class MainPresenter: MainViewPresenterProtocol {
 
     weak var view: MainViewProtocol?
     let networkService: NetworkServiceProtocol!
-    var news: [Article]?
     var router: RouterProtocol?
+    var news: [Article]?
 
     required init(view: MainViewProtocol, networkService: NetworkServiceProtocol, router: RouterProtocol) {
-        self.view = view
         self.networkService = networkService
+        self.view = view
         self.router = router
         getNews()
     }

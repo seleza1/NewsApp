@@ -9,10 +9,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var presenter: DetailViewPresenterProtocol!
+
     private let button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Нажми на меня", for: .normal)
+        button.setTitle("Узнать когда была публикация", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.2860158086, green: 0.6941199899, blue: 0.3407269716, alpha: 1)
 
         return button
@@ -33,8 +35,6 @@ class DetailViewController: UIViewController {
 
         return image
     }()
-
-    var presenter: DetailViewPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
