@@ -6,20 +6,10 @@
 //
 
 import UIKit
-import SafariServices
 
 class MainViewController: UIViewController {
 
     var presenter: MainViewPresenterProtocol!
-    let networkManager = NetworkService()
-
-    private var viewModel = [NewsNodel]()
-    private var articles  = [Article]()
-
-
-
-    let identifier = "Cell"
-
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -34,21 +24,6 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         setConstraints()
         setTableView()
-
-
-        networkManager.getTopStories { result in
-            switch result {
-            case .success(let success):
-                self.articles = success
-                self.viewModel = success.compactMap({ NewsNodel(title: $0.title, subtitle: $0.description, imageUrl: URL(string: $0.urlToImage ?? ""))
-                })
-                DispatchQueue.main.async {
-                self.tableView.reloadData()
-                }
-            case .failure(let failure):
-                print(failure)
-            }
-        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -67,23 +42,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let news = presenter.news?[indexPath.row]
-
-        cell.configure(with: viewModel[indexPath.row])
+        cell.configure(with: news!)
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let news = presenter.news?[indexPath.row]
-//        presenter.tapOnTheNews(news: news!)
-
-        tableView.deselectRow(at: indexPath, animated: true)
-        let article = articles[indexPath.row]
-
-        guard let url = URL(string: article.url) else { return }
-        let vc = SFSafariViewController(url: url)
-        present(vc, animated: true)
-        
+        let news = presenter.news?[indexPath.row]
+        presenter.tapOnTheNews(news: news!)
 
     }
 }
