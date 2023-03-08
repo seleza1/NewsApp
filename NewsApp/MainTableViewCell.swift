@@ -47,6 +47,7 @@ class MainTableViewCell: UITableViewCell {
         image.clipsToBounds = true
         image.contentMode = .scaleToFill
         image.backgroundColor = .secondarySystemBackground
+        image.layer.cornerRadius = 6
         return image
     }()
 
@@ -93,7 +94,7 @@ extension MainTableViewCell {
             imageViews.topAnchor.constraint(equalTo: topAnchor, constant: 1),
             imageViews.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -1),
             imageViews.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -1),
-            imageViews.widthAnchor.constraint(equalToConstant: 150),
+            imageViews.widthAnchor.constraint(equalToConstant: 120),
 
             valueLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             valueLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30),
