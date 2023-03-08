@@ -16,11 +16,8 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .white
         
     }
-
 }
 
 extension InfoViewController: InfoViewProtocol {
 
 }
-
-
