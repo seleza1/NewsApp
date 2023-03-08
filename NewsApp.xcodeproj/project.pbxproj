@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE86710E29B8BC3000F7FDAB /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86710D29B8BC3000F7FDAB /* InfoPresenter.swift */; };
+		CE86711029B8BC3D00F7FDAB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86710F29B8BC3D00F7FDAB /* InfoViewController.swift */; };
 		CEA4B86429B7C50500A4C2E5 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4B86329B7C50500A4C2E5 /* MainTableViewCell.swift */; };
 		CEB63D1529B5224700108D43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB63D1429B5224700108D43 /* AppDelegate.swift */; };
 		CEB63D1729B5224700108D43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB63D1629B5224700108D43 /* SceneDelegate.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE86710D29B8BC3000F7FDAB /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
+		CE86710F29B8BC3D00F7FDAB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		CEA4B86329B7C50500A4C2E5 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		CEB63D1129B5224700108D43 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB63D1429B5224700108D43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE86710C29B8BC1E00F7FDAB /* InfoModule */ = {
+			isa = PBXGroup;
+			children = (
+				CE86710D29B8BC3000F7FDAB /* InfoPresenter.swift */,
+				CE86710F29B8BC3D00F7FDAB /* InfoViewController.swift */,
+			);
+			path = InfoModule;
+			sourceTree = "<group>";
+		};
 		CEB63D0829B5224700108D43 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +83,7 @@
 		CEB63D1329B5224700108D43 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE86710C29B8BC1E00F7FDAB /* InfoModule */,
 				CEB7D29529B744D100B326C4 /* Applications */,
 				CEB7D29729B7459300B326C4 /* Assembly */,
 				CEB7D2A929B78B3C00B326C4 /* DetailModule */,
@@ -77,7 +91,6 @@
 				CEB7D2A229B7480D00B326C4 /* Router */,
 				CEB7D29F29B7464F00B326C4 /* ServiceLayer */,
 				CEB7D29629B744DE00B326C4 /* Resources */,
-				CEA4B86329B7C50500A4C2E5 /* MainTableViewCell.swift */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 		CEB7D29829B7459900B326C4 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				CEA4B86329B7C50500A4C2E5 /* MainTableViewCell.swift */,
 				CEB7D29D29B7461600B326C4 /* Model */,
 				CEB7D29C29B7461000B326C4 /* View */,
 				CEB7D29E29B7461E00B326C4 /* Presenter */,
@@ -260,8 +274,10 @@
 				CEB7D29A29B745BF00B326C4 /* MainPresenter.swift in Sources */,
 				CEB63D2929B522CD00108D43 /* NetworkService.swift in Sources */,
 				CEB7D2AE29B78B8000B326C4 /* DetailPresenter.swift in Sources */,
+				CE86710E29B8BC3000F7FDAB /* InfoPresenter.swift in Sources */,
 				CEB63D1929B5224700108D43 /* MainViewController.swift in Sources */,
 				CEB7D2A129B7478E00B326C4 /* MainModuleBuilder.swift in Sources */,
+				CE86711029B8BC3D00F7FDAB /* InfoViewController.swift in Sources */,
 				CEB63D1529B5224700108D43 /* AppDelegate.swift in Sources */,
 				CEB63D1729B5224700108D43 /* SceneDelegate.swift in Sources */,
 				CEB63D2B29B525ED00108D43 /* News.swift in Sources */,

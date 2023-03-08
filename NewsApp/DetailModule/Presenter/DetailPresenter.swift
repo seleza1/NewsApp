@@ -11,22 +11,28 @@ protocol DetailViewProtocol: AnyObject {
 }
 
 protocol DetailViewPresenterProtocol: AnyObject {
-    init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, news: Article?)
+    init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, news: Article?, router: RouterProtocol)
     func setNews()
     func getImage()
+    func presentInfo()
 }
 
 class DetailPresenter: DetailViewPresenterProtocol {
+    func presentInfo() {
+        router?.pushInfo()
+    }
+
 
     weak var view: DetailViewProtocol!
     let networkService: NetworkServiceProtocol!
     var news: Article?
+    let router: RouterProtocol?
 
-
-    required init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, news: Article?) {
+    required init(view: DetailViewProtocol, networkService: NetworkServiceProtocol, news: Article?, router: RouterProtocol) {
         self.view = view
         self.networkService = networkService
         self.news = news
+        self.router = router
         getImage()
     }
 

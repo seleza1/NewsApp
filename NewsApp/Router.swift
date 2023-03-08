@@ -17,6 +17,7 @@ protocol RouterProtocol: RouterMain {
     func initialViewController()
     func showDetail(news: Article)
     func popToRoot()
+    func pushInfo()
 }
 
 class Router: RouterProtocol {
@@ -45,6 +46,13 @@ class Router: RouterProtocol {
     func popToRoot() {
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
+        }
+    }
+
+    func pushInfo() {
+        if let navigationController = navigationController {
+            guard let infoViewController = assemblyBuilder?.createInfoModule(router: self) else { return }
+            navigationController.pushViewController(infoViewController, animated: true)
         }
     }
 }
